@@ -4,41 +4,205 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LIC Advisor App</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
-body{background:#eef2f7;}
-header{background:linear-gradient(135deg,#0a3d62,#1e90ff);color:#fff;padding:15px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:600;}
+
+body{
+background:#eef2f7;
+display:flex;
+justify-content:center;
+}
+
+.container{
+max-width:420px;
+width:100%;
+background:#f8fbff;
+min-height:100vh;
+border-radius:20px;
+padding:10px;
+}
+
+header{
+background:linear-gradient(135deg,#0a3d62,#1e90ff);
+color:#fff;
+padding:12px;
+border-bottom-left-radius:20px;
+border-bottom-right-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+font-weight:600;
+position:sticky;
+top:0;
+}
+
 header img{height:35px;}
-.container{padding:15px;max-width:1000px;margin:auto;}
-.card{background:#fff;border-radius:15px;padding:15px;margin-bottom:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s;}
-.card:hover{transform:translateY(-5px);} 
-.profile{display:flex;align-items:center;gap:15px;}
-.profile img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #1e90ff;}
+
+.card{
+background:#fff;
+border-radius:15px;
+padding:12px;
+margin-bottom:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{transform:translateY(-3px);}
+
+.profile{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.profile img{
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #1e90ff;
+}
+
 .bold{font-weight:600;}
-.dashboard{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px;}
-.dash{background:linear-gradient(135deg,#1e90ff,#0a3d62);color:#fff;padding:12px;border-radius:10px;text-align:center;}
-input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #ccc;}
-button{width:100%;padding:12px;border:none;border-radius:8px;background:#1e90ff;color:#fff;font-size:15px;cursor:pointer;}
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+margin-bottom:10px;
+}
+
+.dash{
+background:linear-gradient(135deg,#1e90ff,#0a3d62);
+color:#fff;
+padding:10px;
+border-radius:12px;
+text-align:center;
+font-size:13px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:6px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#1e90ff;
+color:#fff;
+font-size:15px;
+cursor:pointer;
+}
+
 button:hover{background:#0a3d62;}
-.table{overflow-x:auto;} table{width:100%;border-collapse:collapse;} th,td{padding:10px;border-bottom:1px solid #ddd;font-size:14px;} th{background:#1e90ff;color:#fff;}
-.status-active{color:green;font-weight:600;} .status-due{color:orange;font-weight:600;} .status-overdue{color:red;font-weight:600;}
-.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.policy-card{background:#0a3d62;color:#fff;padding:12px;border-radius:10px;cursor:pointer;text-align:center;}
-.policy-card:hover{background:#1e90ff;}
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;}
-.modal-content{background:#fff;padding:20px;border-radius:10px;width:90%;max-width:400px;}
-.close{float:right;cursor:pointer;font-size:18px;}
-@media(min-width:768px){.dashboard{grid-template-columns:repeat(4,1fr);} .policy-grid{grid-template-columns:repeat(4,1fr);} }
+
+.table{overflow-x:auto;}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:10px;
+border-bottom:1px solid #ddd;
+font-size:13px;
+text-align:center;
+}
+
+th{
+background:#1e90ff;
+color:#fff;
+}
+
+.status-active{color:green;font-weight:600;}
+.status-due{color:orange;font-weight:600;}
+.status-overdue{color:red;font-weight:600;}
+
+.policy-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.policy-card{
+background:#0a3d62;
+color:#fff;
+padding:10px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+}
+
+.policy-card:hover{
+background:#1e90ff;
+}
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal-content{
+background:#fff;
+padding:20px;
+border-radius:10px;
+width:90%;
+max-width:350px;
+}
+
+.close{
+float:right;
+cursor:pointer;
+}
+
+.chat-btn{
+background:linear-gradient(135deg,#25D366,#128C7E);
+color:#fff;
+padding:6px 12px;
+border-radius:25px;
+display:inline-flex;
+align-items:center;
+gap:5px;
+font-size:12px;
+font-weight:600;
+box-shadow:0 2px 8px rgba(0,0,0,0.2);
+cursor:pointer;
+transition:0.2s;
+}
+
+.chat-btn:hover{
+transform:scale(1.05);
+}
+
 </style>
 </head>
+
 <body>
+
+<div class="container">
+
 <header>
 <img src="liclogo.jpg" onerror="this.style.display='none'">
 LIC Advisor Vidya Jadhav
 </header>
-
-<div class="container">
 
 <div class="card">
 <div class="profile">
@@ -58,7 +222,7 @@ LIC Advisor Vidya Jadhav
 <div class="policy-grid">
 <div class="policy-card" onclick="showPolicy('Jeevan Anand','Life cover + saving plan')">Jeevan Anand</div>
 <div class="policy-card" onclick="showPolicy('Tech Term','Low premium high cover')">Tech Term</div>
-<div class="policy-card" onclick="showPolicy('New Endowment','Safe investment with returns')">Endowment</div>
+<div class="policy-card" onclick="showPolicy('Endowment','Safe investment with returns')">Endowment</div>
 <div class="policy-card" onclick="showPolicy('Money Back','Regular returns every few years')">Money Back</div>
 </div>
 </div>
@@ -70,14 +234,19 @@ LIC Advisor Vidya Jadhav
 <input id="p" placeholder="Policy Name">
 <input id="amt" placeholder="Premium">
 <input id="dt" type="date">
-<button onclick="add()">Add</button>
+<button onclick="add()">Add Policy</button>
 </div>
 
 <div class="card">
 <h3>Policies</h3>
 <div class="table">
 <table id="tbl">
-<tr><th>Name</th><th>Policy</th><th>Status</th><th>WA</th></tr>
+<tr>
+<th>Name</th>
+<th>Policy</th>
+<th>Status</th>
+<th>Chat</th>
+</tr>
 </table>
 </div>
 </div>
@@ -94,15 +263,78 @@ LIC Advisor Vidya Jadhav
 </div>
 
 <script>
+
 let db=JSON.parse(localStorage.getItem('lic'))||[];
-function save(){localStorage.setItem('lic',JSON.stringify(db));}
-function calc(d){let diff=(new Date(d)-new Date())/(1000*60*60*24);if(diff<0)return ['Overdue','status-overdue'];if(diff<=5)return ['Due','status-due'];return ['Active','status-active'];}
-function render(){let t=document.getElementById('tbl');t.innerHTML='<tr><th>Name</th><th>Policy</th><th>Status</th><th>WA</th></tr>';let A=0,D=0,O=0;db.forEach(x=>{let [s,c]=calc(x.dt);if(s=='Active')A++; else if(s=='Due')D++; else O++;let r=t.insertRow();r.innerHTML=`<td>${x.n}</td><td>${x.p}</td><td class="${c}">${s}</td><td><button onclick="wa('${x.m}')">📲</button></td>`;});document.getElementById('t').innerText=db.length;document.getElementById('a').innerText=A;document.getElementById('d').innerText=D;document.getElementById('o').innerText=O;}
-function add(){db.push({n:n.value,m:m.value,p:p.value,amt:amt.value,dt:dt.value});save();render();n.value=m.value=p.value=amt.value=dt.value='';}
-function wa(m){window.open(`https://wa.me/91${m}?text=LIC premium due`,'_blank');}
-function showPolicy(title,desc){document.getElementById('policyTitle').innerText=title;document.getElementById('policyDesc').innerText=desc;document.getElementById('modal').style.display='flex';}
-function closeModal(){document.getElementById('modal').style.display='none';}
+
+function save(){
+localStorage.setItem('lic',JSON.stringify(db));
+}
+
+function calc(d){
+let diff=(new Date(d)-new Date())/(1000*60*60*24);
+if(diff<0)return ['Overdue','status-overdue'];
+if(diff<=5)return ['Due','status-due'];
+return ['Active','status-active'];
+}
+
+function render(){
+let t=document.getElementById('tbl');
+
+t.innerHTML=`
+<tr>
+<th>Name</th>
+<th>Policy</th>
+<th>Status</th>
+<th>Chat</th>
+</tr>`;
+
+db.forEach(x=>{
+
+let [s,c]=calc(x.dt);
+
+let row=t.insertRow();
+
+row.innerHTML=`
+<td>${x.n}</td>
+<td>${x.p}</td>
+<td class="${c}">${s}</td>
+<td>
+<a href="https://wa.me/919115121575?text=${encodeURIComponent('Hello '+x.n+', your LIC premium is due. Please pay on time. - Vidya Jadhav')}" target="_blank">
+<div class="chat-btn">💬 Chat</div>
+</a>
+</td>
+`;
+});
+}
+
+function add(){
+
+db.push({
+n:n.value,
+m:m.value,
+p:p.value,
+amt:amt.value,
+dt:dt.value
+});
+
+save();
 render();
+
+n.value=m.value=p.value=amt.value=dt.value='';
+}
+
+function showPolicy(title,desc){
+document.getElementById('policyTitle').innerText=title;
+document.getElementById('policyDesc').innerText=desc;
+document.getElementById('modal').style.display='flex';
+}
+
+function closeModal(){
+document.getElementById('modal').style.display='none';
+}
+
+render();
+
 </script>
 
 </body>
