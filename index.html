@@ -3,106 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIC Agent CRM - Hari H Jadhav</title>
+<title>LIC Agent App</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Arial;background:#f5f7fb;}
-header{background:#0a3d62;color:white;padding:15px;text-align:center;font-size:20px;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:10px;}
-header img{height:30px;}
-.container{padding:15px;}
-.card{background:white;border-radius:12px;padding:15px;margin-bottom:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);transition:0.3s;}
-.card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.2);} 
-input{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #ccc;}
-button{width:100%;padding:12px;border:none;border-radius:8px;background:#0a3d62;color:white;font-size:16px;cursor:pointer;}
-button:hover{background:#07406d;}
-.profile{display:flex;align-items:center;gap:20px;}
-.profile img{width:100px;height:100px;border-radius:50%;background:#ddd;object-fit:cover;border:3px solid #0a3d62;}
-.bold{font-weight:bold;}
-.table{width:100%;overflow-x:auto;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:#eef2f7;}
+
+header{
+  background:linear-gradient(135deg,#0a3d62,#1e90ff);
+  color:#fff;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-weight:600;
+}
+header img{height:35px;}
+
+.container{padding:15px;max-width:1000px;margin:auto;}
+
+.card{
+  background:#fff;
+  border-radius:15px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+.card:hover{transform:translateY(-5px);}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.profile img{
+  width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #1e90ff;
+}
+
+.bold{font-weight:600;}
+
+.dashboard{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px;}
+.dash{
+  background:linear-gradient(135deg,#1e90ff,#0a3d62);
+  color:#fff;
+  padding:12px;
+  border-radius:10px;
+  text-align:center;
+}
+
+input{
+  width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #ccc;
+}
+
+button{
+  width:100%;padding:12px;border:none;border-radius:8px;background:#1e90ff;color:#fff;font-size:15px;cursor:pointer;
+}
+button:hover{background:#0a3d62;}
+
+.table{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
-th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left;}
-th{background:#0a3d62;color:white;}
-.status-active{color:green;font-weight:bold;}
-.status-due{color:orange;font-weight:bold;}
-.status-overdue{color:red;font-weight:bold;}
-.policy-card{display:flex;gap:10px;overflow-x:auto;}
-.policy-box{min-width:150px;background:#0a3d62;color:white;padding:10px;border-radius:10px;cursor:pointer;}
-.policy-box:hover{background:#07406d;}
-.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.dash-box{background:#0a3d62;color:white;padding:15px;border-radius:10px;text-align:center;}
-@media(max-width:768px){.dashboard{grid-template-columns:1fr 1fr;}}
-@media(min-width:768px){.grid{display:grid;grid-template-columns:1fr 2fr;gap:20px;}}
+th,td{padding:10px;border-bottom:1px solid #ddd;font-size:14px;}
+th{background:#1e90ff;color:#fff;}
+
+.status-active{color:green;font-weight:600;}
+.status-due{color:orange;font-weight:600;}
+.status-overdue{color:red;font-weight:600;}
+
+@media(min-width:768px){
+  .dashboard{grid-template-columns:repeat(4,1fr);} 
+}
 </style>
 </head>
 <body>
+
 <header>
-<img src="images/liclogo.jpg">
-LIC Agent Portal
+<img src="liclogo.jpg" onerror="this.style.display='none'">
+LIC Agent App
 </header>
 
 <div class="container">
 
-<!-- Dashboard -->
 <div class="card">
-<h3>Dashboard</h3>
-<div class="dashboard">
-<div class="dash-box">Clients<br><span id="total"></span></div>
-<div class="dash-box">Active<br><span id="active"></span></div>
-<div class="dash-box">Due Soon<br><span id="due"></span></div>
-<div class="dash-box">Overdue<br><span id="overdue"></span></div>
-</div>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>Agent Profile</h3>
 <div class="profile">
-<img src="125.png" alt="Profile Photo" onerror="this.src='https://via.placeholder.com/100'">
+<img src="123.png" onerror="this.src='https://via.placeholder.com/90'">
 <div>
 <p class="bold">Vidya Jadhav</p>
 <p class="bold">📞 9115121575</p>
 <p class="bold">✉️ jadhav.h@gmail.com</p>
 <p class="bold">Branch: PCMC</p>
-<p class="bold">Agent Code: LIC0537495V</p>
+<p class="bold">Code: LIC0537495V</p>
 </div>
 </div>
+</div>
+
+<div class="dashboard">
+<div class="dash">Total<br><span id="t"></span></div>
+<div class="dash">Active<br><span id="a"></span></div>
+<div class="dash">Due<br><span id="d"></span></div>
+<div class="dash">Overdue<br><span id="o"></span></div>
 </div>
 
 <div class="card">
 <h3>Add Policy</h3>
-<input id="name" placeholder="Client Name">
-<input id="mobile" placeholder="Mobile">
-<input id="policy" placeholder="Policy Name">
-<input id="premium" placeholder="Premium Amount">
-<input id="date" type="date">
-<button onclick="addData()">Add Policy</button>
-</div>
-
-</div>
-
-<div class="card">
-<h3>Best LIC Policies</h3>
-<div class="policy-card">
-<div class="policy-box">Jeevan Anand</div>
-<div class="policy-box">Tech Term</div>
-<div class="policy-box">New Endowment</div>
-<div class="policy-box">Money Back</div>
-</div>
+<input id="n" placeholder="Client Name">
+<input id="m" placeholder="Mobile">
+<input id="p" placeholder="Policy Name">
+<input id="amt" placeholder="Premium">
+<input id="dt" type="date">
+<button onclick="add()">Add</button>
 </div>
 
 <div class="card">
-<h3>Client Policies</h3>
+<h3>Policies</h3>
 <div class="table">
-<table id="table">
-<tr>
-<th>Name</th>
-<th>Mobile</th>
-<th>Policy</th>
-<th>Premium</th>
-<th>Due Date</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
+<table id="tbl">
+<tr><th>Name</th><th>Policy</th><th>Status</th><th>WA</th></tr>
 </table>
 </div>
 </div>
@@ -110,53 +127,41 @@ LIC Agent Portal
 </div>
 
 <script>
-let data = JSON.parse(localStorage.getItem("licData")) || [];
+let db=JSON.parse(localStorage.getItem('lic'))||[];
 
-function save(){
- localStorage.setItem("licData", JSON.stringify(data));
+function save(){localStorage.setItem('lic',JSON.stringify(db));}
+
+function calc(d){
+ let diff=(new Date(d)-new Date())/(1000*60*60*24);
+ if(diff<0)return ['Overdue','status-overdue'];
+ if(diff<=5)return ['Due','status-due'];
+ return ['Active','status-active'];
 }
 
 function render(){
- let table=document.getElementById("table");
- table.innerHTML=`<tr><th>Name</th><th>Mobile</th><th>Policy</th><th>Premium</th><th>Due Date</th><th>Status</th><th>Action</th></tr>`;
-
- let active=0,due=0,overdue=0;
-
- data.forEach(d=>{
-  let today=new Date();
-  let diff=(new Date(d.date)-today)/(1000*60*60*24);
-
-  let status="Active",cls="status-active";
-  if(diff<0){status="Overdue";cls="status-overdue";overdue++;}
-  else if(diff<=5){status="Due Soon";cls="status-due";due++;}
-  else active++;
-
-  let row=table.insertRow();
-  row.innerHTML=`<td>${d.name}</td><td>${d.mobile}</td><td>${d.policy}</td><td>${d.premium}</td><td>${d.date}</td><td class="${cls}">${status}</td><td><button onclick="sendWA('${d.mobile}')">WhatsApp</button></td>`;
+ let t=document.getElementById('tbl');
+ t.innerHTML='<tr><th>Name</th><th>Policy</th><th>Status</th><th>WA</th></tr>';
+ let A=0,D=0,O=0;
+ db.forEach(x=>{
+  let [s,c]=calc(x.dt);
+  if(s=='Active')A++; else if(s=='Due')D++; else O++;
+  let r=t.insertRow();
+  r.innerHTML=`<td>${x.n}</td><td>${x.p}</td><td class="${c}">${s}</td><td><button onclick="wa('${x.m}')">📲</button></td>`;
  });
-
- document.getElementById("total").innerText=data.length;
- document.getElementById("active").innerText=active;
- document.getElementById("due").innerText=due;
- document.getElementById("overdue").innerText=overdue;
+ document.getElementById('t').innerText=db.length;
+ document.getElementById('a').innerText=A;
+ document.getElementById('d').innerText=D;
+ document.getElementById('o').innerText=O;
 }
 
-function addData(){
- let d={
-  name:document.getElementById("name").value,
-  mobile:document.getElementById("mobile").value,
-  policy:document.getElementById("policy").value,
-  premium:document.getElementById("premium").value,
-  date:document.getElementById("date").value
- };
- data.push(d);
- save();
- render();
+function add(){
+ db.push({n:n.value,m:m.value,p:p.value,amt:amt.value,dt:dt.value});
+ save();render();
+ n.value=m.value=p.value=amt.value=dt.value='';
 }
 
-function sendWA(mobile){
- let msg="Your LIC premium is due. Please pay on time.";
- window.open(`https://wa.me/91${mobile}?text=${encodeURIComponent(msg)}`,'_blank');
+function wa(m){
+ window.open(`https://wa.me/91${m}?text=LIC premium due`,'_blank');
 }
 
 render();
