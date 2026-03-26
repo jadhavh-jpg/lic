@@ -25,6 +25,7 @@ border-radius:20px;
 padding:10px;
 }
 
+/* HEADER */
 header{
 background:linear-gradient(135deg,#0a3d62,#1e90ff);
 color:#fff;
@@ -42,6 +43,7 @@ top:0;
 
 header img{height:35px;}
 
+/* CARD */
 .card{
 background:#fff;
 border-radius:15px;
@@ -53,6 +55,7 @@ transition:0.3s;
 
 .card:hover{transform:translateY(-3px);}
 
+/* PROFILE */
 .profile{
 display:flex;
 align-items:center;
@@ -69,22 +72,7 @@ border:3px solid #1e90ff;
 
 .bold{font-weight:600;}
 
-.dashboard{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:8px;
-margin-bottom:10px;
-}
-
-.dash{
-background:linear-gradient(135deg,#1e90ff,#0a3d62);
-color:#fff;
-padding:10px;
-border-radius:12px;
-text-align:center;
-font-size:13px;
-}
-
+/* INPUT */
 input{
 width:100%;
 padding:10px;
@@ -106,6 +94,25 @@ cursor:pointer;
 
 button:hover{background:#0a3d62;}
 
+/* POLICY CARDS */
+.policy-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.policy-card{
+background:#0a3d62;
+color:#fff;
+padding:10px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+}
+
+.policy-card:hover{background:#1e90ff;}
+
+/* TABLE */
 .table{overflow-x:auto;}
 
 table{
@@ -129,25 +136,37 @@ color:#fff;
 .status-due{color:orange;font-weight:600;}
 .status-overdue{color:red;font-weight:600;}
 
-.policy-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-.policy-card{
-background:#0a3d62;
-color:#fff;
-padding:10px;
-border-radius:10px;
-text-align:center;
+/* 🔥 BIG CHAT BUTTON */
+.chat-btn-pro{
+background:linear-gradient(135deg,#25D366,#128C7E);
+color:white;
+padding:10px 16px;
+border-radius:30px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+font-size:14px;
+font-weight:700;
 cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+transition:0.3s;
+animation:pulse 1.5s infinite;
 }
 
-.policy-card:hover{
-background:#1e90ff;
+.chat-btn-pro:hover{
+transform:scale(1.1);
+box-shadow:0 6px 20px rgba(0,0,0,0.4);
+background:linear-gradient(135deg,#128C7E,#25D366);
 }
 
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+
+/* MODAL */
 .modal{
 position:fixed;
 top:0;
@@ -168,29 +187,7 @@ width:90%;
 max-width:350px;
 }
 
-.close{
-float:right;
-cursor:pointer;
-}
-
-.chat-btn{
-background:linear-gradient(135deg,#25D366,#128C7E);
-color:#fff;
-padding:6px 12px;
-border-radius:25px;
-display:inline-flex;
-align-items:center;
-gap:5px;
-font-size:12px;
-font-weight:600;
-box-shadow:0 2px 8px rgba(0,0,0,0.2);
-cursor:pointer;
-transition:0.2s;
-}
-
-.chat-btn:hover{
-transform:scale(1.05);
-}
+.close{cursor:pointer;}
 
 </style>
 </head>
@@ -204,6 +201,7 @@ transform:scale(1.05);
 LIC Advisor Vidya Jadhav
 </header>
 
+<!-- PROFILE -->
 <div class="card">
 <div class="profile">
 <img src="125.png" onerror="this.src='https://via.placeholder.com/90'">
@@ -217,6 +215,7 @@ LIC Advisor Vidya Jadhav
 </div>
 </div>
 
+<!-- POLICIES -->
 <div class="card">
 <h3>Best LIC Policies</h3>
 <div class="policy-grid">
@@ -227,6 +226,7 @@ LIC Advisor Vidya Jadhav
 </div>
 </div>
 
+<!-- ADD -->
 <div class="card">
 <h3>Add Policy</h3>
 <input id="n" placeholder="Client Name">
@@ -237,6 +237,7 @@ LIC Advisor Vidya Jadhav
 <button onclick="add()">Add Policy</button>
 </div>
 
+<!-- TABLE -->
 <div class="card">
 <h3>Policies</h3>
 <div class="table">
@@ -253,7 +254,7 @@ LIC Advisor Vidya Jadhav
 
 </div>
 
-<!-- Modal -->
+<!-- MODAL -->
 <div class="modal" id="modal">
 <div class="modal-content">
 <span class="close" onclick="closeModal()">✖</span>
@@ -299,8 +300,15 @@ row.innerHTML=`
 <td>${x.p}</td>
 <td class="${c}">${s}</td>
 <td>
-<a href="https://wa.me/919115121575?text=${encodeURIComponent('Hello '+x.n+', your LIC premium is due. Please pay on time. - Vidya Jadhav')}" target="_blank">
-<div class="chat-btn">💬 Chat</div>
+<a href="https://wa.me/919115121575?text=${encodeURIComponent(`Hello 👋
+
+Welcome to LIC Services!
+
+I am Vidya Jadhav, your LIC Advisor.
+I am here to help you with the best insurance plans, savings, and financial security.
+
+Feel free to ask anything 😊`)}" target="_blank">
+<div class="chat-btn-pro">💬 Chat Now</div>
 </a>
 </td>
 `;
@@ -308,18 +316,9 @@ row.innerHTML=`
 }
 
 function add(){
-
-db.push({
-n:n.value,
-m:m.value,
-p:p.value,
-amt:amt.value,
-dt:dt.value
-});
-
+db.push({n:n.value,m:m.value,p:p.value,amt:amt.value,dt:dt.value});
 save();
 render();
-
 n.value=m.value=p.value=amt.value=dt.value='';
 }
 
