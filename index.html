@@ -3,91 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIC Agent App</title>
+<title>LIC Advisor App</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
 body{background:#eef2f7;}
-
-header{
-  background:linear-gradient(135deg,#0a3d62,#1e90ff);
-  color:#fff;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  font-weight:600;
-}
+header{background:linear-gradient(135deg,#0a3d62,#1e90ff);color:#fff;padding:15px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:600;}
 header img{height:35px;}
-
 .container{padding:15px;max-width:1000px;margin:auto;}
-
-.card{
-  background:#fff;
-  border-radius:15px;
-  padding:15px;
-  margin-bottom:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  transition:0.3s;
-}
-.card:hover{transform:translateY(-5px);}
-
-.profile{
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-.profile img{
-  width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #1e90ff;
-}
-
+.card{background:#fff;border-radius:15px;padding:15px;margin-bottom:15px;box-shadow:0 5px 15px rgba(0,0,0,0.1);transition:0.3s;}
+.card:hover{transform:translateY(-5px);} 
+.profile{display:flex;align-items:center;gap:15px;}
+.profile img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #1e90ff;}
 .bold{font-weight:600;}
-
 .dashboard{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px;}
-.dash{
-  background:linear-gradient(135deg,#1e90ff,#0a3d62);
-  color:#fff;
-  padding:12px;
-  border-radius:10px;
-  text-align:center;
-}
-
-input{
-  width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #ccc;
-}
-
-button{
-  width:100%;padding:12px;border:none;border-radius:8px;background:#1e90ff;color:#fff;font-size:15px;cursor:pointer;
-}
+.dash{background:linear-gradient(135deg,#1e90ff,#0a3d62);color:#fff;padding:12px;border-radius:10px;text-align:center;}
+input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #ccc;}
+button{width:100%;padding:12px;border:none;border-radius:8px;background:#1e90ff;color:#fff;font-size:15px;cursor:pointer;}
 button:hover{background:#0a3d62;}
-
-.table{overflow-x:auto;}
-table{width:100%;border-collapse:collapse;}
-th,td{padding:10px;border-bottom:1px solid #ddd;font-size:14px;}
-th{background:#1e90ff;color:#fff;}
-
-.status-active{color:green;font-weight:600;}
-.status-due{color:orange;font-weight:600;}
-.status-overdue{color:red;font-weight:600;}
-
-@media(min-width:768px){
-  .dashboard{grid-template-columns:repeat(4,1fr);} 
-}
+.table{overflow-x:auto;} table{width:100%;border-collapse:collapse;} th,td{padding:10px;border-bottom:1px solid #ddd;font-size:14px;} th{background:#1e90ff;color:#fff;}
+.status-active{color:green;font-weight:600;} .status-due{color:orange;font-weight:600;} .status-overdue{color:red;font-weight:600;}
+.policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.policy-card{background:#0a3d62;color:#fff;padding:12px;border-radius:10px;cursor:pointer;text-align:center;}
+.policy-card:hover{background:#1e90ff;}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;}
+.modal-content{background:#fff;padding:20px;border-radius:10px;width:90%;max-width:400px;}
+.close{float:right;cursor:pointer;font-size:18px;}
+@media(min-width:768px){.dashboard{grid-template-columns:repeat(4,1fr);} .policy-grid{grid-template-columns:repeat(4,1fr);} }
 </style>
 </head>
 <body>
-
 <header>
 <img src="liclogo.jpg" onerror="this.style.display='none'">
-LIC Agent App
+LIC Advisor Vidya Jadhav
 </header>
 
 <div class="container">
 
 <div class="card">
 <div class="profile">
-<img src="123.png" onerror="this.src='https://via.placeholder.com/90'">
+<img src="125.png" onerror="this.src='https://via.placeholder.com/90'">
 <div>
 <p class="bold">Vidya Jadhav</p>
 <p class="bold">📞 9115121575</p>
@@ -103,6 +58,16 @@ LIC Agent App
 <div class="dash">Active<br><span id="a"></span></div>
 <div class="dash">Due<br><span id="d"></span></div>
 <div class="dash">Overdue<br><span id="o"></span></div>
+</div>
+
+<div class="card">
+<h3>Best LIC Policies</h3>
+<div class="policy-grid">
+<div class="policy-card" onclick="showPolicy('Jeevan Anand','Life cover + saving plan')">Jeevan Anand</div>
+<div class="policy-card" onclick="showPolicy('Tech Term','Low premium high cover')">Tech Term</div>
+<div class="policy-card" onclick="showPolicy('New Endowment','Safe investment with returns')">Endowment</div>
+<div class="policy-card" onclick="showPolicy('Money Back','Regular returns every few years')">Money Back</div>
+</div>
 </div>
 
 <div class="card">
@@ -126,44 +91,24 @@ LIC Agent App
 
 </div>
 
+<!-- Modal -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">✖</span>
+<h3 id="policyTitle"></h3>
+<p id="policyDesc"></p>
+</div>
+</div>
+
 <script>
 let db=JSON.parse(localStorage.getItem('lic'))||[];
-
 function save(){localStorage.setItem('lic',JSON.stringify(db));}
-
-function calc(d){
- let diff=(new Date(d)-new Date())/(1000*60*60*24);
- if(diff<0)return ['Overdue','status-overdue'];
- if(diff<=5)return ['Due','status-due'];
- return ['Active','status-active'];
-}
-
-function render(){
- let t=document.getElementById('tbl');
- t.innerHTML='<tr><th>Name</th><th>Policy</th><th>Status</th><th>WA</th></tr>';
- let A=0,D=0,O=0;
- db.forEach(x=>{
-  let [s,c]=calc(x.dt);
-  if(s=='Active')A++; else if(s=='Due')D++; else O++;
-  let r=t.insertRow();
-  r.innerHTML=`<td>${x.n}</td><td>${x.p}</td><td class="${c}">${s}</td><td><button onclick="wa('${x.m}')">📲</button></td>`;
- });
- document.getElementById('t').innerText=db.length;
- document.getElementById('a').innerText=A;
- document.getElementById('d').innerText=D;
- document.getElementById('o').innerText=O;
-}
-
-function add(){
- db.push({n:n.value,m:m.value,p:p.value,amt:amt.value,dt:dt.value});
- save();render();
- n.value=m.value=p.value=amt.value=dt.value='';
-}
-
-function wa(m){
- window.open(`https://wa.me/91${m}?text=LIC premium due`,'_blank');
-}
-
+function calc(d){let diff=(new Date(d)-new Date())/(1000*60*60*24);if(diff<0)return ['Overdue','status-overdue'];if(diff<=5)return ['Due','status-due'];return ['Active','status-active'];}
+function render(){let t=document.getElementById('tbl');t.innerHTML='<tr><th>Name</th><th>Policy</th><th>Status</th><th>WA</th></tr>';let A=0,D=0,O=0;db.forEach(x=>{let [s,c]=calc(x.dt);if(s=='Active')A++; else if(s=='Due')D++; else O++;let r=t.insertRow();r.innerHTML=`<td>${x.n}</td><td>${x.p}</td><td class="${c}">${s}</td><td><button onclick="wa('${x.m}')">📲</button></td>`;});document.getElementById('t').innerText=db.length;document.getElementById('a').innerText=A;document.getElementById('d').innerText=D;document.getElementById('o').innerText=O;}
+function add(){db.push({n:n.value,m:m.value,p:p.value,amt:amt.value,dt:dt.value});save();render();n.value=m.value=p.value=amt.value=dt.value='';}
+function wa(m){window.open(`https://wa.me/91${m}?text=LIC premium due`,'_blank');}
+function showPolicy(title,desc){document.getElementById('policyTitle').innerText=title;document.getElementById('policyDesc').innerText=desc;document.getElementById('modal').style.display='flex';}
+function closeModal(){document.getElementById('modal').style.display='none';}
 render();
 </script>
 
